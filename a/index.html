@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>品牌有据 · 静中有动版</title>
+<meta name="description" content="发现品牌疑似被模仿后，先固定事实、查清权利基础，再了解沟通、投诉与诉讼三条路径，以及何时需要专业意见。">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.hero{position:relative}
+.hero::after{content:"";position:absolute;right:4%;top:3%;width:min(46%,540px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 48%,rgba(96,118,104,.18),rgba(96,118,104,.06) 58%,rgba(96,118,104,0) 74%);box-shadow:inset 0 0 0 1px rgba(96,118,104,.13);pointer-events:none}
+.hero>div{position:relative;z-index:1}
+.hero-figure{display:flex;align-items:flex-start;justify-content:center;gap:24px}
+.vertical-motto{writing-mode:vertical-rl;font-family:'SimSun','Songti SC',serif;font-size:14px;letter-spacing:7px;color:var(--soft);opacity:.85;padding-top:18px}
+.scroll{position:relative;margin:0;width:100%;max-width:360px;padding:16px 16px 22px;background:linear-gradient(180deg,#efe6d1,#e8dcc3);border:1px solid #cbb994;box-shadow:0 20px 42px rgba(25,61,53,.12)}
+.scroll::before,.scroll::after{content:"";position:absolute;left:-11px;right:-11px;height:9px;background:linear-gradient(180deg,#6b5d46,#493e2f);border-radius:1px}
+.scroll::before{top:-13px}
+.scroll::after{bottom:-13px}
+.scroll-art{padding:9px;background:#f8f2e4;border:1px solid rgba(92,74,48,.22);box-shadow:inset 0 0 0 1px rgba(255,255,255,.32)}
+.scroll img{display:block;width:100%;height:auto}
+.scroll figcaption{font-size:12px;color:#6a5f4c;margin-top:9px;text-align:center;line-height:1.6;letter-spacing:.5px}
+.seal{position:absolute;right:-8px;bottom:46px;width:42px;height:42px;background:#a8402f;color:#f7efdf;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;font-family:'SimSun',serif;font-size:14px;letter-spacing:2px;line-height:1;transform:rotate(-5deg);box-shadow:inset 0 0 0 2px rgba(247,239,223,.45);opacity:.92}
+@media(max-width:700px){
+.hero::after{display:none}
+.hero-figure{gap:0}
+.vertical-motto{display:none}
+.scroll{max-width:250px;padding:12px 12px 18px}
+.scroll::before,.scroll::after{left:-8px;right:-8px;height:7px}
+.scroll::before{top:-10px}
+.scroll::after{bottom:-10px}
+.scroll-art{padding:7px}
+.scroll figcaption{font-size:11px;margin-top:7px}
+.seal{width:34px;height:34px;font-size:12px;right:-5px;bottom:38px}
+}
+
+/* 一次入场：立轴轻展 → 01 的细线拉开；之后全页静态 */
+.hero-figure{filter:drop-shadow(0 18px 30px rgba(25,61,53,.12))}
+.scroll{box-shadow:none;animation:unroll .95s ease-in-out both}
+.vertical-motto{animation:mottoIn .45s ease-out .55s both}
+@keyframes unroll{from{clip-path:inset(-20px -20px 100% -20px)}to{clip-path:inset(-20px)}}
+@keyframes mottoIn{from{opacity:0;transform:translateX(6px)}to{opacity:.85;transform:none}}
+#first-steps{border-top:0;position:relative}
+#first-steps::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line);transform:scaleX(1);transform-origin:left;animation:ruleDraw .55s ease-out .8s both}
+@keyframes ruleDraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* 卷轴语言：左侧竖排编号、细化留白 */
+header,main,footer{max-width:1120px}
+.headcol{position:relative}
+.secno{position:absolute;left:-26px;top:3px;writing-mode:vertical-rl;text-orientation:upright;font-family:'SimSun','Songti SC',serif;font-size:13px;letter-spacing:3px;line-height:1;color:var(--accent);opacity:.75}
+.eyebrow-no{display:none}
+.section{padding:56px 0}
+.sectionhead{margin-bottom:30px}
+h2{text-wrap:balance}
+.path .criteria li{text-wrap:pretty}
+/* 标题首行在窄桌面、宽屏与窄手机上都不折行：左栏固定约 587px */
+h1{font-size:clamp(32px,4.3vw,55px)}
+@media(max-width:700px){
+h1{font-size:clamp(27px,8.3vw,30px)}
+}
+@media(max-width:700px){
+.section{padding:38px 0}
+.sectionhead{margin-bottom:24px}
+.secno{display:none}
+.eyebrow-no{display:inline}
+}
+@media(prefers-reduced-motion:reduce){
+.scroll,.vertical-motto,#first-steps::before{animation:none}
+}
+@media print{
+.scroll{animation:none;clip-path:none}
+.vertical-motto{animation:none}
+#first-steps::before{animation:none;transform:none}
+}
+/* B 版：保留大头 Q 版比例，以显示高度控制首屏视觉分量。 */
+.professional-figure{display:none}
+html[data-preview-theme="b"] .hero::after{display:none}
+html[data-preview-theme="b"] .hero-figure{display:none}
+html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0;text-align:center}
+.professional-figure img{display:block;width:auto;height:350px;max-width:100%;object-fit:contain}
+.professional-figure figcaption{max-width:280px;font-size:12px;line-height:1.8;color:var(--soft)}
+@media(max-width:700px){
+  .professional-figure img{height:230px}
+  html[data-preview-theme="b"] .professional-figure{gap:8px}
+  .professional-figure figcaption{font-size:11px}
+}
+</style>
+<noscript><style>.path .needs{display:list-item!important}.pathtoggle{display:none!important}</style></noscript>
+</head>
+<body id="top" class="has-chapterbar">
+<header>
+  <a class="logo" href="#top">品牌<i>有据</i></a>
+  <nav aria-label="主导航">
+    <a class="nav-current" href="#situations">遇到品牌问题</a>
+    <span class="navitem">品牌保护基础<span class="tag">筹备中</span></span>
+    <span class="navitem">案例解读<span class="tag">筹备中</span></span>
+    <a href="#about">关于徐律师</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow">品牌保护 · 从具体问题开始</div>
+    <h1>发现自家品牌被山寨，<br><span>我该怎么办？</span></h1>
+    <p class="intro">名字很像、包装装潢眼熟、账号或域名相似，产品图与文案也被使用了。<br>先看接下来能做什么，再选择处理方式。</p>
+    <div class="actions">
+      <a class="primary" href="#first-steps">先看该做什么 ↗</a>
+      <a class="textlink" href="#situations">我遇到了什么情况</a>
+    </div>
+  </div>
+  <div>
+    <figure class="professional-figure">
+      <img src="../assets/hero-character-b-glasses-q-v3-preview.webp" width="640" height="960" alt="徐律师的戴眼镜Q版形象，身穿藏蓝职业装，右手掌心向上朝标题方向作引导">
+      <figcaption>把零散的发现，整理成能够说明的问题。</figcaption>
+    </figure>
+    <div class="hero-figure">
+      <span class="vertical-motto" aria-hidden="true">先把情况看清楚</span>
+      <figure class="scroll">
+        <div class="scroll-art">
+          <img src="../assets/hero-character-draft.jpg" width="592" height="623" alt="徐律师的Q版形象，托腮坐在书案旁">
+        </div>
+        <span class="seal" aria-hidden="true">有据</span>
+        <figcaption>把零散的发现，整理成能够说明的问题。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<nav class="mobilejump" aria-label="页面章节">
+  <a href="#first-steps">先做什么</a>
+  <a href="#situations">遇到什么</a>
+  <a href="#checklist">整理提纲</a>
+  <a href="#paths">处理方式</a>
+  <a href="#about">联系徐律</a>
+</nav>
+
+<section class="section" id="first-steps">
+  <div class="sectionhead">
+    <div class="headcol"><span class="secno" aria-hidden="true">01</span><div class="eyebrow"><span class="eyebrow-no">01 / </span>发现之后</div><h2>先做三件事，再考虑走哪条路。</h2></div>
+    <p>不要求先判断是否构成侵权；把看到的事实、你拥有的权利和你在意的结果先放在一起，不确定的地方可以留作问题。</p>
+  </div>
+  <div class="steps">
+    <div class="step"><span class="num">第一步</span><strong>保存你看到的事实</strong><p>截图、拍照，记录看到的时间、平台、店铺名称、网页地址或线下地点。保存原始文件和完整页面，不只留裁剪图。</p></div>
+    <div class="step"><span class="num">第二步</span><strong>盘点你拥有的权利</strong><p>商标注册在哪些类别、著作权和外观设计专利是否登记，店铺字号、包装、宣传素材从什么时候开始使用——这些构成你的权利基础。没有的部分先记下来即可。</p></div>
+    <div class="step"><span class="num">第三步</span><strong>想想你最在意的结果</strong><p>让对方停止使用、下架商品或账号、消除影响、获得赔偿，还是转为合作或授权？现在不用急着定，看完三条路径再选也可以。</p></div>
+  </div>
+  <p class="note">事实核实前，暂不公开下结论或指责对方；沟通与公开表达可以放在固定证据、查清情况之后。</p>
+</section>
+
+<section class="section" id="situations">
+  <div class="sectionhead">
+    <div class="headcol"><span class="secno" aria-hidden="true">02</span><div class="eyebrow"><span class="eyebrow-no">02 / </span>从现象进入</div><h2>你遇到了什么情况？</h2></div>
+    <p>选择最接近的一项。同一件事可能涉及多种现象，可以分别查看。</p>
+  </div>
+  <div class="scenarios" role="group" aria-label="情形选择">
+    <button class="scenario" data-key="name" aria-pressed="true" aria-controls="situation-panel"><span class="num">01</span><strong>名字或标识很像</strong><span>品牌名称、Logo，或店铺展示的标识。</span><b>看这类情形要先理清什么 ↓</b></button>
+    <button class="scenario" data-key="package" aria-pressed="false" aria-controls="situation-panel"><span class="num">02</span><strong>包装或装潢相同</strong><span>配色、图案、布局，或整体视觉印象。</span><b>看这类情形要先理清什么 ↓</b></button>
+    <button class="scenario" data-key="image" aria-pressed="false" aria-controls="situation-panel"><span class="num">03</span><strong>图片或文案被使用</strong><span>产品图、宣传图，或一段熟悉的介绍。</span><b>看这类情形要先理清什么 ↓</b></button>
+    <button class="scenario" data-key="account" aria-pressed="false" aria-controls="situation-panel"><span class="num">04</span><strong>账户或域名相似</strong><span>社交账号、店铺名称，或网站域名。</span><b>看这类情形要先理清什么 ↓</b></button>
+  </div>
+  <div class="panel" id="situation-panel" aria-live="polite">
+    <h3 id="panel-title">名字或标识：先描述你看到的差异与相似</h3>
+    <ul id="panel-items">
+      <li>对方使用了什么文字或图形？你的品牌对应的内容是什么？</li>
+      <li>这些内容出现在产品、店铺名称，还是宣传页面上？</li>
+      <li>双方分别展示了什么商品或服务？</li>
+    </ul>
+  </div>
+  <p class="note">这里按现象帮助你整理信息，不代表对是否构成侵权的判断。</p>
+</section>
+
+<section class="section checklayout" id="checklist">
+  <div class="headcol">
+    <span class="secno" aria-hidden="true">03</span>
+    <div class="eyebrow"><span class="eyebrow-no">03 / </span>把信息放在一起</div>
+    <h2>把“看起来很像”，<br>说得更具体。</h2>
+    <p>这是一份通用整理提示，不是完整证据清单。整理页只在自己的浏览器里填写，不会上传品牌、客户或案件资料。</p>
+  </div>
+  <div class="checklist">
+    <div class="clue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>我在哪里看到了它<small>平台、店铺名称、网址或线下地点。</small></span></div>
+    <div class="clue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.6"/></svg><span>我看到了什么<small>具体文字、图形、包装装潢、图片，或账号与域名信息，以及出现的位置。</small></span></div>
+    <div class="clue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>我是什么时候发现的<small>首次发现的时间；目前能够确认的时间。</small></span></div>
+    <div class="clue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>我有哪些可供核对的自有资料<small>资料名称与存放位置；不在本页面上传。</small></span></div>
+    <div class="checkactions">
+      <a class="primary" href="checklist.html">整理提纲</a>
+    </div>
+    <p class="note"><a class="textlink" href="#paths">了解有哪些处理方式 ↓</a></p>
+    <p class="note">整理页里逐项填写，填完可以复制带走。需要进一步讨论自己的情况，可<a class="textlink" href="#about">联系徐律师</a>。</p>
+  </div>
+</section>
+
+<section class="section" id="paths">
+  <div class="sectionhead">
+    <div class="headcol"><span class="secno" aria-hidden="true">04</span><div class="eyebrow"><span class="eyebrow-no">04 / </span>可能的三条路径</div><h2>有哪些处理方式可以考虑？</h2></div>
+    <p>处理方式不一定只能选一种，可以先后或组合使用。选择时，结合具体情况、你的目标，以及可投入的时间和费用来评估。</p>
+  </div>
+  <div class="callout">以下为一般信息，不构成法律意见。具体是否适用，仍需结合事实、证据由专业人士进行个案评估。</div>
+  <div class="paths">
+    <div class="path">
+      <div class="k">路径 A</div><h3>沟通协商</h3>
+      <ul class="criteria">
+        <li><strong>适合什么情况</strong>你希望对方尽快停止使用；对方规模不大、能够联系上时，沟通通常更有效。</li>
+        <li class="needs" id="prep-a"><strong>需要准备什么</strong>权属证明、双方内容对比、发现时间的记录。</li>
+        <li><strong>有什么限制</strong>对方是否回应不受你控制；尽量采用可留痕的书面方式，避免超出授权范围的承诺。</li>
+      </ul>
+      <button class="pathtoggle" type="button" aria-expanded="false" aria-controls="prep-a">查看准备事项</button>
+    </div>
+    <div class="path">
+      <div class="k">路径 B</div><h3>平台或行政投诉</h3>
+      <ul class="criteria">
+        <li><strong>适合什么情况</strong>侵权内容集中在电商、内容平台，或属于市场监管职责范围。</li>
+        <li class="needs" id="prep-b"><strong>需要准备什么</strong>权属证明与对比说明；平台投诉走平台通道，行政投诉向市场监管部门举报。</li>
+        <li><strong>有什么限制</strong>是否受理、处理范围与结果，不由投诉人单方决定。</li>
+      </ul>
+      <button class="pathtoggle" type="button" aria-expanded="false" aria-controls="prep-b">查看准备事项</button>
+    </div>
+    <div class="path">
+      <div class="k">路径 C</div><h3>诉讼</h3>
+      <ul class="criteria">
+        <li><strong>适合什么情况</strong>除极少量、偶发的侵权外，大多数情形都可以考虑诉讼；对方经沟通或投诉后仍不停止、影响持续扩大，或你希望把停止使用与赔偿一并处理时，更适合走这条路。</li>
+        <li class="needs" id="prep-c"><strong>需要准备什么</strong>权属证据、使用证据、侵权证据，以及损失或获利的线索。</li>
+        <li><strong>有什么限制</strong>周期、成本与举证要求较高，宜先做可行性评估。</li>
+      </ul>
+      <button class="pathtoggle" type="button" aria-expanded="false" aria-controls="prep-c">查看准备事项</button>
+    </div>
+  </div>
+  <p class="note">以上仅为路径概览，具体程序、材料与时限以现行法律法规及受理机关要求为准。</p>
+</section>
+
+<section class="section lawyer" id="lawyer">
+  <div class="headcol">
+    <span class="secno" aria-hidden="true">05</span>
+    <div class="eyebrow"><span class="eyebrow-no">05 / </span>什么时候需要专业意见</div>
+    <h2>出现这些情况，建议尽早咨询。</h2>
+    <ul>
+      <li>希望先梳理权利基础、评估维权方向，再决定是否投入、投入哪条路径。</li>
+      <li>不确定自己的商标类别、注册状态能否覆盖对方的使用方式。</li>
+      <li>对方行为仍在持续，或已经扩展到更多平台、账号和地区。</li>
+      <li>平台投诉被驳回，或对方提出反诉、发来律师函。</li>
+      <li>准备发函、起诉，或涉及金额较大、多个主体。</li>
+    </ul>
+    <p class="note">早期做一次评估，通常比走到一半再回头更省成本。</p>
+  </div>
+  <aside class="about" id="about">
+    <div class="eyebrow">关于作者</div>
+    <h3>徐律师</h3>
+    <p>关注品牌保护与商业标识相关事务，以通俗的方式整理读者可以自行核对的问题与步骤。</p>
+    <p>内容依据：公开法律法规与实务经验整理；一般信息，不构成法律意见。</p>
+    <div class="placeholder">电话 139XXXXXXXX　邮箱 XXX@XXX.com</div>
+    <p class="note">联系方式为占位信息，后续更新 · 更新日期 2026.11.03</p>
+  </aside>
+</section>
+
+<section class="section reading" id="faq">
+  <div class="headcol">
+    <span class="secno" aria-hidden="true">06</span>
+    <div class="eyebrow"><span class="eyebrow-no">06 / </span>常见疑问</div>
+    <h2>用户常问的几个问题</h2>
+    <details><summary>还没注册商标，还能处理吗？</summary><p>可以先固定对方的行为与自己的使用证据。能够主张哪些路径，取决于权利状态和具体事实，建议个案评估后再决定投入。</p></details>
+    <details><summary>要不要先联系对方？</summary><p>没有统一答案。先固定证据、弄清权利基础，再决定沟通的方式与顺序，通常比在情绪下先沟通更稳妥。</p></details>
+    <details><summary>平台投诉和起诉，先做哪个？</summary><p>不必二选一，也没有固定顺序。平台投诉通常更快，但处理范围有限；诉讼周期更长、成本更高。可以按目标与预算选择，也可以组合使用。</p></details>
+    <details><summary>这里的内容能直接当法律意见用吗？</summary><p>不能。这里提供一般信息，用于帮助整理问题；具体判断与行动方案需要结合完整事实与资料。</p></details>
+  </div>
+  <div class="headcol">
+    <span class="secno" aria-hidden="true">07</span>
+    <div class="eyebrow"><span class="eyebrow-no">07 / </span>网站结构</div>
+    <h2>这个网站以后会有什么</h2>
+    <details open><summary>遇到品牌问题（已开放）</summary><p>按现象进入，梳理事实，了解可能路径。当前首页内容即属于这一栏。</p></details>
+    <details><summary>品牌保护基础（筹备中）</summary><p>基础概念、日常管理与常见误区，帮助在问题发生前做好准备。</p></details>
+    <details><summary>案例解读（筹备中）</summary><p>从公开案例与脱敏事件中理解判断思路，不承担高频资讯更新。</p></details>
+    <details><summary>关于徐律师（已开放）</summary><p>作者、专业方向、内容依据与联系方式。</p></details>
+    <p class="note">筹备中的栏目暂不设入口，待第一份完整内容完成后再开放。</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>品牌有据 · 静中有动版</span>
+  <span>栏目规划：遇到品牌问题 · 品牌保护基础（筹备中）· 案例解读（筹备中）· 关于徐律师</span>
+</footer>
+
+<script>
+const content={
+  name:['名字或标识：先描述你看到的差异与相似',['对方使用了什么文字或图形？你的品牌对应的内容是什么？','这些内容出现在产品、店铺名称，还是宣传页面上？','双方分别展示了什么商品或服务？']],
+  package:['包装或外观：把具体的相似之处列出来',['你觉得相似的是配色、图案、结构，还是整体布局？','你能否分别找到双方对应的完整展示内容？','相似之处出现在同类产品，还是不同产品上？']],
+  image:['图片或文案：被使用的是哪些内容',['你看到的是完整图片、局部裁剪，还是经过修改的版本？','相应图片或文案由谁制作？现有资料能说明哪些情况？','内容出现在哪个页面，周围配有什么说明？']],
+  account:['账户或域名：记录名称、平台与地址',['对方使用的账号名称、店铺名称或域名，与你的品牌是什么关系？','该账号或店铺在哪个平台、以什么方式展示和经营？','能否确认账号主体、店铺主体或域名注册信息？']]
+};
+document.querySelectorAll('.scenario').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('.scenario').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  const [title,items]=content[button.dataset.key];
+  document.getElementById('panel-title').textContent=title;
+  document.getElementById('panel-items').replaceChildren(...items.map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));
+}));
+document.querySelectorAll('.pathtoggle').forEach(btn=>btn.addEventListener('click',()=>{
+  const open=btn.closest('.path').classList.toggle('open');
+  btn.setAttribute('aria-expanded',String(open));
+  btn.textContent=open?'收起准备事项':'查看准备事项';
+}));
+const jumpLinks=[...document.querySelectorAll('.mobilejump a')];
+const jumpTargets=jumpLinks.map(a=>document.querySelector(a.getAttribute('href')));
+function markJump(){
+  const y=scrollY+70;
+  let current=-1;
+  jumpTargets.forEach((el,i)=>{if(el&&el.getBoundingClientRect().top+scrollY<=y)current=i;});
+  jumpLinks.forEach((a,i)=>{
+    a.classList.toggle('active',i===current);
+    if(i===current)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');
+  });
+}
+addEventListener('scroll',markJump,{passive:true});
+addEventListener('resize',markJump);
+markJump();
+</script>
+</body></html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>品牌有据 · 首页双版本</title>
+<meta name="description" content="品牌有据网站首页的两个正式版本，可按不同偏好查看。">
+<style>
+:root{--ink:#20302c;--soft:#5d6b66;--line:#e2e6e2;--accent:#3d6257}
+*{box-sizing:border-box}
+body{margin:0;padding:56px 24px;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#f7f6f2;color:var(--ink);line-height:1.75}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-size:26px;margin:0 0 6px;letter-spacing:1px}
+p.lead{margin:0 0 12px;color:var(--soft);font-size:15px}
+p.ask{margin:0 0 34px;font-size:14px;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+a.card{display:block;padding:26px 24px;background:#fff;border:1px solid var(--line);border-radius:2px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s}
+a.card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(32,48,44,.08)}
+.card .tag{display:inline-block;font-size:12px;letter-spacing:2px;color:var(--accent);border:1px solid currentColor;padding:1px 8px;margin-bottom:14px}
+.card strong{display:block;font-size:19px;margin-bottom:8px}
+.card span.desc{display:block;font-size:14px;color:var(--soft)}
+.note{margin-top:32px;font-size:13px;color:var(--soft);line-height:1.9}
+.note b{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>品牌有据 · 首页双版本</h1>
+<p class="lead">同一套内容与信息结构，两种视觉方向。两份均为正式版本，可以点进去逐段查看，手机上也可以。</p>
+<p class="ask">A、B 两版同时保留，可按不同偏好查看。</p>
+<div class="grid">
+  <a class="card" href="a/"><span class="tag">A</span><strong>静中有动版</strong><span class="desc">立轴托腮人物，中国风竖向题字，首屏偏「记忆点」；适合从公众号、内容与熟人介绍来的读者。</span></a>
+  <a class="card" href="b/"><span class="tag">B</span><strong>藏蓝小像版</strong><span class="desc">藏蓝职业形象的裸图人物，关于徐律师处配小像；首屏更直接，偏「一眼可信」。</span></a>
+</div>
+<p class="note">
+  <b>两版相同的地方</b>：标题、简介、三步自查、四种情形、整理提纲、三条路径、常见疑问与联系方式都一样，差别只在首屏人物、配色与章节编号的呈现方式。<br>
+  <b>如何查看</b>：可分别进入 A、B 两版，按不同偏好阅读；两版都会持续保留。
+</p>
+</div>
+</body>
+</html>

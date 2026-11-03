@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>情况整理提纲 · 品牌有据</title>
+<meta name="description" content="按几个方面写下你看到的品牌使用情况，整理成一份可以自己保存、也可以在咨询时使用的提纲。">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html">品牌<i>有据</i></a>
+  <nav aria-label="主导航">
+    <a href="index.html">返回首页</a>
+    <a href="index.html#paths">处理方式</a>
+    <a href="index.html#about">关于徐律师</a>
+  </nav>
+</header>
+
+<main class="subpage">
+  <section class="section">
+    <div class="eyebrow">情况整理</div>
+    <h1>把看到的情况，整理成一份提纲。</h1>
+    <p class="intro">按下面几项逐项填写你掌握的内容。不需要先判断是否构成侵权，不确定的地方可以空着，或写下你的疑问。</p>
+    <p class="note">网站不会上传或保存你填写的内容。刷新、关闭或离开页面后，内容可能丢失，请在离开前复制到自己的文档中。</p>
+
+    <table class="filltable">
+      <thead><tr><th scope="col">整理项目</th><th scope="col">你的记录</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span id="q1">我在哪里看到了它</span><small id="h1">平台、店铺名称、网址或线下地点。</small></th><td><textarea rows="2" aria-labelledby="q1" aria-describedby="h1"></textarea></td></tr>
+        <tr><th scope="row"><span id="q2">我看到了什么</span><small id="h2">具体文字、图形、包装装潢、图片，或账号与域名信息，以及出现的位置。</small></th><td><textarea rows="3" aria-labelledby="q2" aria-describedby="h2"></textarea></td></tr>
+        <tr><th scope="row"><span id="q3">我是什么时候发现的</span><small id="h3">首次发现的时间；目前能够确认的时间。</small></th><td><textarea rows="2" aria-labelledby="q3" aria-describedby="h3"></textarea></td></tr>
+        <tr><th scope="row"><span id="q4">我有哪些可供核对的自有资料</span><small id="h4">资料名称与存放位置；不需要在这里上传或填写客户、案件资料。</small></th><td><textarea rows="2" aria-labelledby="q4" aria-describedby="h4"></textarea></td></tr>
+        <tr><th scope="row"><span id="q5">我最在意的结果</span><small id="h5">希望对方停止使用、下架、消除影响、获得赔偿，或转为合作授权；现在不用急着定。</small></th><td><textarea rows="2" aria-labelledby="q5" aria-describedby="h5"></textarea></td></tr>
+        <tr><th scope="row"><span id="q6">其他补充／仍不清楚的问题</span><small id="h6">可以写下上面没覆盖的内容，或你暂时不确定的问题；不填也可以。</small></th><td><textarea rows="2" aria-labelledby="q6" aria-describedby="h6"></textarea></td></tr>
+      </tbody>
+    </table>
+
+    <div class="checkactions">
+      <button class="primary" id="copy" type="button">复制这份提纲</button>
+      <a class="secondary" href="index.html#about">查看联系方式</a>
+      <button class="linklike" id="clear" type="button">清空</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <p class="note">填写内容不会发送给徐律师。需要咨询时，可先复制提纲，再联系徐律师。</p>
+  </section>
+</main>
+
+<footer>
+  <span>品牌有据（暂定名）· 整理提纲页</span>
+  <span>内容为一般信息，不构成法律意见</span>
+</footer>
+
+<script>
+const fields=[...document.querySelectorAll('.filltable textarea')];
+const status=document.getElementById('status');
+let statusTimer;
+function setStatus(text){status.textContent=text;clearTimeout(statusTimer);statusTimer=setTimeout(()=>{status.textContent='';},4000);}
+function outlineText(){
+  const v=i=>fields[i].value.trim();
+  const lines=[
+    '品牌保护 · 情况整理提纲（自查用）',
+    '整理日期：'+new Date().toLocaleDateString('zh-CN'),
+    '',
+    '发现地点：'+v(0),
+    '所见内容：'+v(1),
+    '发现时间：'+v(2),
+    '自有资料：'+v(3),
+    '在意的结果：'+v(4)
+  ];
+  if(v(5)) lines.push('其他补充：'+v(5));
+  lines.push('','以上为自查整理，不构成法律意见。');
+  return lines.join('\n');
+}
+function showBox(text){
+  let box=document.getElementById('copy-box');
+  if(!box){
+    box=document.createElement('textarea');
+    box.id='copy-box';box.className='copybox';box.readOnly=true;
+    document.getElementById('copy').closest('.checkactions').insertAdjacentElement('afterend',box);
+  }
+  box.value=text;box.focus();box.select();
+}
+document.getElementById('copy').addEventListener('click',async()=>{
+  const text=outlineText();
+  try{await navigator.clipboard.writeText(text);setStatus('已复制，可以粘贴到记事本里。');return;}catch(e){}
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';
+  document.body.appendChild(ta);ta.select();
+  let ok=false;try{ok=document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);
+  if(ok){setStatus('已复制，可以粘贴到记事本里。');}
+  else{showBox(text);setStatus('浏览器未允许自动复制，请在下方文本框里手动复制。');}
+});
+document.getElementById('clear').addEventListener('click',()=>{
+  const box=document.getElementById('copy-box');
+  if(!fields.some(f=>f.value.trim())&&!(box&&box.value.trim())){setStatus('还没有填写内容。');return;}
+  if(!confirm('清空已填写的内容？')) return;
+  fields.forEach(f=>{f.value='';});
+  if(box) box.remove();
+  setStatus('已清空。');
+});
+</script>
+</body></html>

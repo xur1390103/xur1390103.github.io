@@ -1,0 +1,14 @@
+:root{
+--paper:#f6f8f8;--ink:#1b3a57;--soft:#526979;--accent:#8a6430;--line:#dae1e5;--card:#ffffff;
+--panel:#ffffff;--illustration:#e5ebee;--illus-shadow:#c7d2d8;--illus-border:#c2cdd4;--rule-soft:#d8e0e5;
+--hover:#e8eef1;--about:#e8eef1;--callout:#f2f0e9;--draft-bg:#e9edf0;--draft-ink:#4f5d68;--placeholder:#b4c2cb}
+
+h1,h2,.sheet strong,.path h3,.about h3,.stamp{font-family:'Microsoft YaHei','PingFang SC','Noto Sans SC',sans-serif}
+h1{font-weight:700;letter-spacing:0}
+h2{font-weight:700;letter-spacing:0}
+.path h3,.about h3,.sheet strong{font-weight:700}
+.illustration{border-radius:3px}
+@media(min-width:701px){
+.hero{padding:76px 0 64px}
+.section{padding:54px 0}
+}
