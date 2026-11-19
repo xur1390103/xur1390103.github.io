@@ -1,5 +1,10 @@
 async function localApi(url, options = {}) {
-  const response = await fetch(url, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+  let response;
+  try {
+    response = await fetch(url, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+  } catch {
+    throw new Error('无法连接服务。请确认服务已启动，并从服务地址打开此页面。');
+  }
   const data = await response.json();
   if (!response.ok) throw new Error(data.error || '操作失败。');
   return data;
