@@ -6,6 +6,7 @@
 <meta name="description" content="发现品牌疑似被模仿后，先固定事实、查清权利基础，再了解沟通、投诉与诉讼三条路径，以及何时需要专业意见。">
 <link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="../assets/theme-b.css">
+<link rel="stylesheet" href="../assets/local-prototype.css">
 <style>
 .hero{position:relative}
 .hero::after{content:"";position:absolute;right:4%;top:3%;width:min(46%,540px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 48%,rgba(96,118,104,.18),rgba(96,118,104,.06) 58%,rgba(96,118,104,0) 74%);box-shadow:inset 0 0 0 1px rgba(96,118,104,.13);pointer-events:none}
@@ -98,6 +99,13 @@ html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:co
     <span class="navitem">品牌保护基础<span class="tag">筹备中</span></span>
     <span class="navitem">案例解读<span class="tag">筹备中</span></span>
     <a href="#about">关于徐律师</a>
+    <span class="account-menu" data-account-menu>
+      <a class="account-link" data-login-link href="login.html">注册/登录</a>
+      <button class="account-trigger hidden" data-account-trigger type="button" aria-expanded="false"></button>
+      <span class="account-dropdown hidden" data-account-panel>
+        <a href="#about">联系徐律师</a><button type="button" data-logout-button>退出登录</button>
+      </span>
+    </span>
   </nav>
 </header>
 
@@ -143,10 +151,10 @@ html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:co
     <div class="headcol"><span class="secno" aria-hidden="true">01</span><div class="eyebrow"><span class="eyebrow-no">01 / </span>发现之后</div><h2>先做三件事，再考虑走哪条路。</h2></div>
     <p>不要求先判断是否构成侵权；把看到的事实、你拥有的权利和你在意的结果先放在一起，不确定的地方可以留作问题。</p>
   </div>
-  <div class="steps">
-    <div class="step"><span class="num">第一步</span><strong>保存你看到的事实</strong><p>截图、拍照，记录看到的时间、平台、店铺名称、网页地址或线下地点。保存原始文件和完整页面，不只留裁剪图。</p></div>
-    <div class="step"><span class="num">第二步</span><strong>盘点你拥有的权利</strong><p>商标注册在哪些类别、著作权和外观设计专利是否登记，店铺字号、包装、宣传素材从什么时候开始使用——这些构成你的权利基础。没有的部分先记下来即可。</p></div>
-    <div class="step"><span class="num">第三步</span><strong>想想你最在意的结果</strong><p>让对方停止使用、下架商品或账号、消除影响、获得赔偿，还是转为合作或授权？现在不用急着定，看完三条路径再选也可以。</p></div>
+  <div class="journey" aria-label="整理路径">
+    <div class="journey-step"><i>1</i><b>记录你看到的事实</b><span>先留住平台、时间、页面与完整展示，不急着下结论。</span></div>
+    <div class="journey-step"><i>2</i><b>对照自己的资料</b><span>把商标、素材、包装或使用记录放在一起核对。</span></div>
+    <div class="journey-step"><i>3</i><b>整理成一份提纲</b><span>把零散发现写清楚，复制带走，再考虑下一步。</span></div>
   </div>
   <p class="note">事实核实前，暂不公开下结论或指责对方；沟通与公开表达可以放在固定证据、查清情况之后。</p>
 </section>
@@ -187,6 +195,12 @@ html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:co
     <div class="clue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>我有哪些可供核对的自有资料<small>资料名称与存放位置；不在本页面上传。</small></span></div>
     <div class="checkactions">
       <a class="primary" href="checklist.html">整理提纲</a>
+    </div>
+    <div class="outline-preview">
+      <h3>最后会得到什么？</h3>
+      <p>一份由你自己填写、可以复制到本地文档的整理提纲。</p>
+      <ul><li>我在哪里看到它</li><li>我看到了什么</li><li>我什么时候发现</li><li>我有哪些可供核对的资料</li></ul>
+      <p class="note">本地作业版另提供“暂存草稿”体验；公开站仍以自行填写、复制带走为准。</p>
     </div>
     <p class="note"><a class="textlink" href="#paths">了解有哪些处理方式 ↓</a></p>
     <p class="note">整理页里逐项填写，填完可以复制带走。需要进一步讨论自己的情况，可<a class="textlink" href="#about">联系徐律师</a>。</p>
@@ -284,6 +298,7 @@ html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:co
   <span>栏目规划：遇到品牌问题 · 品牌保护基础（筹备中）· 案例解读（筹备中）· 关于徐律师</span>
 </footer>
 
+<script src="../assets/local-auth.js"></script>
 <script>
 const content={
   name:['名字或标识：先描述你看到的差异与相似',['对方使用了什么文字或图形？你的品牌对应的内容是什么？','这些内容出现在产品、店铺名称，还是宣传页面上？','双方分别展示了什么商品或服务？']],
@@ -316,5 +331,6 @@ function markJump(){
 addEventListener('scroll',markJump,{passive:true});
 addEventListener('resize',markJump);
 markJump();
+updateLocalAccountLink();
 </script>
 </body></html>

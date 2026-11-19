@@ -6,6 +6,7 @@
 <meta name="description" content="按几个方面写下你看到的品牌使用情况，整理成一份可以自己保存、也可以在咨询时使用的提纲。">
 <link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="../assets/theme-b.css">
+<link rel="stylesheet" href="../assets/local-prototype.css">
 </head>
 <body>
 <header>
@@ -14,6 +15,13 @@
     <a href="index.html">返回首页</a>
     <a href="index.html#paths">处理方式</a>
     <a href="index.html#about">关于徐律师</a>
+    <span class="account-menu" data-account-menu>
+      <a class="account-link" data-login-link href="login.html">注册/登录</a>
+      <button class="account-trigger hidden" data-account-trigger type="button" aria-expanded="false"></button>
+      <span class="account-dropdown hidden" data-account-panel>
+        <a href="index.html#about">联系徐律师</a><button type="button" data-logout-button>退出登录</button>
+      </span>
+    </span>
   </nav>
 </header>
 
@@ -22,7 +30,7 @@
     <div class="eyebrow">情况整理</div>
     <h1>把看到的情况，整理成一份提纲。</h1>
     <p class="intro">按下面几项逐项填写你掌握的内容。不需要先判断是否构成侵权，不确定的地方可以空着，或写下你的疑问。</p>
-    <p class="note">网站不会上传或保存你填写的内容。刷新、关闭或离开页面后，内容可能丢失，请在离开前复制到自己的文档中。</p>
+    <p class="note">公开站不会上传或保存你填写的内容。当前为本地课程演示版：登录后可将练习草稿暂存在这台电脑；请不要填写真实品牌、客户或案件资料。</p>
 
     <table class="filltable">
       <thead><tr><th scope="col">整理项目</th><th scope="col">你的记录</th></tr></thead>
@@ -38,6 +46,7 @@
 
     <div class="checkactions">
       <button class="primary" id="copy" type="button">复制这份提纲</button>
+      <button class="secondary-button" id="save" type="button">暂存到这台电脑</button>
       <a class="secondary" href="index.html#about">查看联系方式</a>
       <button class="linklike" id="clear" type="button">清空</button>
     </div>
@@ -51,6 +60,7 @@
   <span>内容为一般信息，不构成法律意见</span>
 </footer>
 
+<script src="../assets/local-auth.js"></script>
 <script>
 const fields=[...document.querySelectorAll('.filltable textarea')];
 const status=document.getElementById('status');
@@ -100,5 +110,14 @@ document.getElementById('clear').addEventListener('click',()=>{
   if(box) box.remove();
   setStatus('已清空。');
 });
+document.getElementById('save').addEventListener('click',async()=>{
+  try{
+    const {user}=await localApi('/api/me');
+    if(!user){location.href='login.html?next=/b/checklist.html';return;}
+    const data=await localApi('/api/draft',{method:'PUT',body:JSON.stringify({fields:fields.map(field=>field.value)})});
+    setStatus(data.message+' 可在“我的草稿”继续查看。');
+  }catch(error){setStatus(error.message);}
+});
+updateLocalAccountLink();
 </script>
 </body></html>
