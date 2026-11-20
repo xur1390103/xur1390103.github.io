@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-preview-theme="b">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>品牌有据 · 藏蓝小像版</title>
+<title>品牌有据</title>
 <meta name="description" content="发现品牌疑似被模仿后，先固定事实、查清权利基础，再了解沟通、投诉与诉讼三条路径，以及何时需要专业意见。">
 <link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="../assets/theme-b.css">
@@ -186,7 +186,7 @@ html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:co
     <span class="secno" aria-hidden="true">03</span>
     <div class="eyebrow"><span class="eyebrow-no">03 / </span>把信息放在一起</div>
     <h2>把“看起来很像”，<br>说得更具体。</h2>
-    <p>这是一份通用整理提示，不是完整证据清单。整理页只在自己的浏览器里填写，不会上传品牌、客户或案件资料。</p>
+    <p>这是一份通用整理提示，不是完整证据清单。练习草稿只保存在你自己的账户里；请不要填写真实品牌、客户或案件资料。</p>
   </div>
   <div class="checklist">
     <div class="clue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg><span>我在哪里看到了它<small>平台、店铺名称、网址或线下地点。</small></span></div>
@@ -195,12 +195,6 @@ html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:co
     <div class="clue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>我有哪些可供核对的自有资料<small>资料名称与存放位置；不在本页面上传。</small></span></div>
     <div class="checkactions">
       <a class="primary" href="checklist.html">整理提纲</a>
-    </div>
-    <div class="outline-preview">
-      <h3>最后会得到什么？</h3>
-      <p>一份由你自己填写、可以复制到本地文档的整理提纲。</p>
-      <ul><li>我在哪里看到它</li><li>我看到了什么</li><li>我什么时候发现</li><li>我有哪些可供核对的资料</li></ul>
-      <p class="note">本地作业版另提供“暂存草稿”体验；公开站仍以自行填写、复制带走为准。</p>
     </div>
     <p class="note"><a class="textlink" href="#paths">了解有哪些处理方式 ↓</a></p>
     <p class="note">整理页里逐项填写，填完可以复制带走。需要进一步讨论自己的情况，可<a class="textlink" href="#about">联系徐律师</a>。</p>
@@ -288,18 +282,19 @@ html[data-preview-theme="b"] .professional-figure{display:flex;flex-direction:co
     <details><summary>品牌保护基础（筹备中）</summary><p>基础概念、日常管理与常见误区，帮助在问题发生前做好准备。</p></details>
     <details><summary>案例解读（筹备中）</summary><p>从公开案例与脱敏事件中理解判断思路，不承担高频资讯更新。</p></details>
     <details><summary>关于徐律师（已开放）</summary><p>作者、专业方向、内容依据与联系方式。</p></details>
-    <p class="note">筹备中的栏目暂不设入口，待第一份完整内容完成后再开放。</p>
+    <p class="note">筹备中的栏目暂不设入口。</p>
   </div>
 </section>
 </main>
 
 <footer>
-  <span>品牌有据 · 藏蓝小像版</span>
   <span>栏目规划：遇到品牌问题 · 品牌保护基础（筹备中）· 案例解读（筹备中）· 关于徐律师</span>
 </footer>
 
 <script src="../assets/local-auth.js"></script>
 <script>
+if(location.hash.includes('type=signup'))location.replace('/b/login.html?verified=1');
+else if(location.hash.includes('error_description='))location.replace('/b/login.html?verify_error=1');
 const content={
   name:['名字或标识：先描述你看到的差异与相似',['对方使用了什么文字或图形？你的品牌对应的内容是什么？','这些内容出现在产品、店铺名称，还是宣传页面上？','双方分别展示了什么商品或服务？']],
   package:['包装或外观：把具体的相似之处列出来',['你觉得相似的是配色、图案、结构，还是整体布局？','你能否分别找到双方对应的完整展示内容？','相似之处出现在同类产品，还是不同产品上？']],

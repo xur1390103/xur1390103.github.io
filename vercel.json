@@ -1,0 +1,9 @@
+{
+  "framework": null,
+  "redirects": [
+    { "source": "/", "destination": "/b/index.html", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/auth/confirm", "destination": "/auth/confirm/index.html" }
+  ]
+}

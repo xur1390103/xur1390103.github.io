@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.vercel
+.git
+node_modules/
+data/
+*.log
+server.js
+server-supabase.js
+/index.html
+deploy.cmd

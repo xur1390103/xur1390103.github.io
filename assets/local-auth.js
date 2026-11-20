@@ -18,9 +18,16 @@ async function updateLocalAccountLink() {
   const { user } = await localApi('/api/me');
   if (!user) return;
   loginLink.classList.add('hidden');
-  trigger.textContent = user.username;
+  trigger.textContent = user.displayName || user.username || user.email;
   trigger.classList.remove('hidden');
   panel.classList.remove('hidden');
+  if (!panel.querySelector('[data-my-draft-link]')) {
+    const draftLink = document.createElement('a');
+    draftLink.href = '/b/my-draft.html';
+    draftLink.textContent = '我的草稿';
+    draftLink.dataset.myDraftLink = '';
+    panel.prepend(draftLink);
+  }
   trigger.addEventListener('click', event => {
     event.stopPropagation();
     const isOpen = menu.classList.toggle('open');
@@ -34,5 +41,5 @@ async function updateLocalAccountLink() {
 }
 function redirectAfterLogin() {
   const next = new URLSearchParams(location.search).get('next');
-  location.href = next && next.startsWith('/') ? next : '/b/my-draft.html';
+  location.href = next && next.startsWith('/') ? next : '/b/index.html';
 }

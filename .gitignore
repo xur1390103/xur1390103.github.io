@@ -1,2 +1,7 @@
 data/*.json
 server.*.log
+.env
+.env.local
+.vercel
+node_modules
+deploy.cmd

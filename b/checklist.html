@@ -30,7 +30,7 @@
     <div class="eyebrow">情况整理</div>
     <h1>把看到的情况，整理成一份提纲。</h1>
     <p class="intro">按下面几项逐项填写你掌握的内容。不需要先判断是否构成侵权，不确定的地方可以空着，或写下你的疑问。</p>
-    <p class="note">公开站不会上传或保存你填写的内容。当前为本地课程演示版：登录后可将练习草稿暂存在这台电脑；请不要填写真实品牌、客户或案件资料。</p>
+    <p class="note">当前为课程练习版：登录后可将练习草稿保存至你的云端账户；请不要填写真实品牌、客户或案件资料。</p>
 
     <table class="filltable">
       <thead><tr><th scope="col">整理项目</th><th scope="col">你的记录</th></tr></thead>
@@ -46,7 +46,7 @@
 
     <div class="checkactions">
       <button class="primary" id="copy" type="button">复制这份提纲</button>
-      <button class="secondary-button" id="save" type="button">暂存到这台电脑</button>
+      <button class="secondary-button" id="save" type="button">保存到云端账户</button>
       <a class="secondary" href="index.html#about">查看联系方式</a>
       <button class="linklike" id="clear" type="button">清空</button>
     </div>
@@ -64,6 +64,7 @@
 <script>
 const fields=[...document.querySelectorAll('.filltable textarea')];
 const status=document.getElementById('status');
+const pendingDraftKey='brandPendingDraft';
 let statusTimer;
 function setStatus(text){status.textContent=text;clearTimeout(statusTimer);statusTimer=setTimeout(()=>{status.textContent='';},4000);}
 function outlineText(){
@@ -107,17 +108,49 @@ document.getElementById('clear').addEventListener('click',()=>{
   if(!fields.some(f=>f.value.trim())&&!(box&&box.value.trim())){setStatus('还没有填写内容。');return;}
   if(!confirm('清空已填写的内容？')) return;
   fields.forEach(f=>{f.value='';});
+  sessionStorage.removeItem(pendingDraftKey);
   if(box) box.remove();
   setStatus('已清空。');
 });
-document.getElementById('save').addEventListener('click',async()=>{
+async function saveDraft({redirectAfterSave=false}={}){
   try{
     const {user}=await localApi('/api/me');
-    if(!user){location.href='login.html?next=/b/checklist.html';return;}
+    if(!user){
+      sessionStorage.setItem(pendingDraftKey,JSON.stringify(fields.map(field=>field.value)));
+      location.href='login.html?next=/b/checklist.html?afterLogin=save';
+      return;
+    }
     const data=await localApi('/api/draft',{method:'PUT',body:JSON.stringify({fields:fields.map(field=>field.value)})});
+    sessionStorage.removeItem(pendingDraftKey);
+    if(redirectAfterSave){location.href='my-draft.html';return;}
     setStatus(data.message+' 可在“我的草稿”继续查看。');
   }catch(error){setStatus(error.message);}
-});
+}
+document.getElementById('save').addEventListener('click',()=>saveDraft({redirectAfterSave:true}));
+let pending=null;
+try{
+  pending=JSON.parse(sessionStorage.getItem(pendingDraftKey)||'null');
+  if(Array.isArray(pending)&&pending.length===fields.length){
+    fields.forEach((field,index)=>{field.value=typeof pending[index]==='string'?pending[index]:'';});
+  }else{
+    pending=null;
+  }
+}catch{sessionStorage.removeItem(pendingDraftKey);pending=null;}
 updateLocalAccountLink();
+const afterLoginSave=new URLSearchParams(location.search).get('afterLogin')==='save';
+if(afterLoginSave){
+  saveDraft({redirectAfterSave:true});
+}else if(!pending){
+  (async()=>{
+    try{
+      const {user}=await localApi('/api/me');
+      if(!user||fields.some(field=>field.value.trim())) return;
+      const {draft}=await localApi('/api/draft');
+      if(draft&&Array.isArray(draft.fields)&&draft.fields.length===fields.length){
+        fields.forEach((field,index)=>{field.value=typeof draft.fields[index]==='string'?draft.fields[index]:'';});
+      }
+    }catch(e){}
+  })();
+}
 </script>
 </body></html>
